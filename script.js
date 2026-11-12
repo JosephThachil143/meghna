@@ -68,6 +68,30 @@ if (langToggle) {
   items.forEach((el) => io.observe(el));
 })();
 
+// ---------------- Animated counters ----------------
+(function () {
+  const nums = document.querySelectorAll(".metric-num[data-count]");
+  if (!nums.length) return;
+  const run = (el) => {
+    const target = parseInt(el.getAttribute("data-count"), 10);
+    const suffix = el.getAttribute("data-suffix") || "";
+    const dur = 1100;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if (!("IntersectionObserver" in window)) { nums.forEach(run); return; }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  nums.forEach((n) => io.observe(n));
+})();
+
 // ---------------- CV download modal ----------------
 const dlBtn = document.getElementById("download-cv");
 const cvModal = document.getElementById("cv-modal");
