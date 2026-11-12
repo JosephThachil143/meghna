@@ -46,6 +46,28 @@ if (langToggle) {
   applyLanguage(saved);
 })();
 
+// ---------------- Scroll reveal ----------------
+(function () {
+  const items = document.querySelectorAll(".section, .metrics");
+  items.forEach((el) => el.classList.add("reveal"));
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("in"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  items.forEach((el) => io.observe(el));
+})();
+
 // ---------------- CV download modal ----------------
 const dlBtn = document.getElementById("download-cv");
 const cvModal = document.getElementById("cv-modal");
