@@ -18,34 +18,27 @@ if (toggle && links) {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ---------------- Language toggle (EN / DE) ----------------
-function applyLanguage(lang) {
-  const attr = lang === "de" ? "data-de" : "data-en";
-  document.querySelectorAll("[data-en]").forEach((el) => {
-    const val = el.getAttribute(attr);
-    if (val !== null) el.innerHTML = val;
-  });
-  document.documentElement.setAttribute("lang", lang);
-  document.querySelectorAll(".lang-opt").forEach((opt) => {
-    opt.classList.toggle("active", opt.getAttribute("data-lang") === lang);
-  });
-  try { localStorage.setItem("mcv-lang", lang); } catch (e) {}
+// ---------------- Language switch (static pages: / = English, /de/ = German) ----------------
+const pageLang = (location.pathname === "/de" || location.pathname.indexOf("/de/") === 0) ? "de" : "en";
+function altUrl(lang) {
+  const base = location.pathname.replace(/^\/de(\/|$)/, "/");
+  return lang === "de" ? "/de" + (base === "/" ? "/" : base) : base;
 }
-
+// Legacy links like /?lang=de go to the German page
+try {
+  if (pageLang === "en" && new URLSearchParams(location.search).get("lang") === "de") {
+    location.replace(altUrl("de") + location.hash);
+  }
+} catch (e) {}
+document.querySelectorAll(".lang-opt").forEach((opt) => {
+  opt.classList.toggle("active", opt.getAttribute("data-lang") === pageLang);
+});
 const langToggle = document.getElementById("lang-toggle");
 if (langToggle) {
   langToggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("lang") === "de" ? "de" : "en";
-    applyLanguage(current === "de" ? "en" : "de");
+    location.href = altUrl(pageLang === "de" ? "en" : "de") + location.hash;
   });
 }
-
-(function initLang() {
-  let saved = "en";
-  try { saved = localStorage.getItem("mcv-lang") || "en"; } catch (e) {}
-  applyLanguage(saved);
-})();
-
 // ---------------- Scroll reveal ----------------
 (function () {
   const items = document.querySelectorAll(".section, .metrics");
