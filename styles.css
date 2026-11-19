@@ -218,3 +218,6 @@ button.btn-ghost { color: #fff; }
 .skill-group-wide { grid-column: 1 / -1; }
 .skill-group-wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
 @media (max-width: 860px) { .skill-group-wide ul { grid-template-columns: 1fr; } }
+
+/* Education degree titles in regular weight */
+.xp-body h3.edu-title { font-weight: 400; }
