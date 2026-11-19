@@ -61,7 +61,13 @@
       .toolbar { display:none; }
       .page { box-shadow:none; margin:0; max-width:none; padding:14mm 16mm; }
       h2.sec { margin-top:14px; }
-      .row { page-break-inside:avoid; }
+      .row { display:block; break-inside:auto; overflow:visible; }
+      .row::after { content:""; display:block; clear:both; }
+      .row .when { float:left; width:116px; }
+      .row .what { margin-left:130px; }
+      .row .what li, .row .what h3, .row .what .org { break-inside:avoid; }
+      .row .what h3 { break-after:avoid; }
+      h2.sec { break-after:avoid; }
       @page { margin:0; }
     }
   </style>
@@ -110,7 +116,9 @@
           <li data-en="&lt;strong&gt;Monitoring&lt;/strong&gt; — Built a DynamoDB monitoring dashboard with alerts." data-de="&lt;strong&gt;Monitoring&lt;/strong&gt; — Aufbau eines DynamoDB-Monitoring-Dashboards mit Alarmen."><strong>Monitoring</strong> — Built a DynamoDB monitoring dashboard with alerts.</li>
           <li data-en="&lt;strong&gt;Cost visibility&lt;/strong&gt; — Applied MAP 2.0 tagging and removed deprecated resources to improve cost visibility." data-de="&lt;strong&gt;Kostentransparenz&lt;/strong&gt; — Umsetzung von MAP-2.0-Tagging und Entfernung veralteter Ressourcen für mehr Kostentransparenz."><strong>Cost visibility</strong> — Applied MAP 2.0 tagging and removed deprecated resources to improve cost visibility.</li>
           <li data-en="&lt;strong&gt;Observability and security tooling&lt;/strong&gt; — Integrated Datadog for monitoring; implemented PreFlight and SonarQube and supported dev and ops teams day to day." data-de="&lt;strong&gt;Observability und Security-Tooling&lt;/strong&gt; — Integration von Datadog für Monitoring; Einführung von PreFlight und SonarQube sowie tägliche Unterstützung von Entwicklungs- und Betriebsteams."><strong>Observability and security tooling</strong> — Integrated Datadog for monitoring; implemented PreFlight and SonarQube and supported dev and ops teams day to day.</li>
-          <li data-en="&lt;strong&gt;Threat modelling&lt;/strong&gt; — Conducted threat modelling for applications together with the security team." data-de="&lt;strong&gt;Threat Modelling&lt;/strong&gt; — Durchführung von Threat Modelling für Anwendungen gemeinsam mit dem Security-Team."><strong>Threat modelling</strong> — Conducted threat modelling for applications together with the security team.</li>
+          <li data-en="&lt;strong&gt;Security forums&lt;/strong&gt; — Attend the bi-weekly security forums with the ISO and Security team; share updates with the team and implement the resulting recommendations." data-de="&lt;strong&gt;Security-Foren&lt;/strong&gt; — Teilnahme an den zweiwöchentlichen Security-Foren mit dem ISO- und Security-Team; Weitergabe der Updates an das Team und Umsetzung der daraus resultierenden Empfehlungen."><strong>Security forums</strong> — Attend the bi-weekly security forums with the ISO and Security team; share updates with the team and implement the resulting recommendations.</li>
+          <li data-en="&lt;strong&gt;Security Hub monitoring&lt;/strong&gt; — Monitor AWS Security Hub findings via dashboards (Tableau) and support engineering teams through remediation." data-de="&lt;strong&gt;Security-Hub-Monitoring&lt;/strong&gt; — Monitoring der AWS-Security-Hub-Findings über Dashboards (Tableau) und Unterstützung der Engineering-Teams bei der Behebung."><strong>Security Hub monitoring</strong> — Monitor AWS Security Hub findings via dashboards (Tableau) and support engineering teams through remediation.</li>
+          <li data-en="&lt;strong&gt;Threat modelling&lt;/strong&gt; — Conduct threat modelling on team projects and applications with TUI&#x27;s Threat Designer tool, in collaboration with the Security team and following its recommended approach." data-de="&lt;strong&gt;Threat Modelling&lt;/strong&gt; — Durchführung von Threat Modelling für Teamprojekte und Anwendungen mit dem Threat-Designer-Tool von TUI, in Zusammenarbeit mit dem Security-Team und nach dessen empfohlenem Vorgehen."><strong>Threat modelling</strong> — Conduct threat modelling on team projects and applications with TUI's Threat Designer tool, in collaboration with the Security team and following its recommended approach.</li>
           <li data-en="&lt;strong&gt;Streaming data and analytics&lt;/strong&gt; — Built streaming data ingestion with Kinesis and Lambda; building analytics skills with Tableau and Snowflake." data-de="&lt;strong&gt;Streaming-Daten und Analytics&lt;/strong&gt; — Aufbau von Streaming-Datenaufnahme mit Kinesis und Lambda; Ausbau der Analytics-Kenntnisse mit Tableau und Snowflake."><strong>Streaming data and analytics</strong> — Built streaming data ingestion with Kinesis and Lambda; building analytics skills with Tableau and Snowflake.</li>
         </ul>
       </div>
@@ -121,10 +129,15 @@
         <h3>Cloud Engineer</h3>
         <div class="org" data-en="Sync Lab, Italy" data-de="Sync Lab, Italien">Sync Lab, Italy</div>
         <ul>
-          <li data-en="Created CI/CD pipelines with GitLab; configured Auto Scaling groups and policies." data-de="Aufbau von CI/CD-Pipelines mit GitLab; Konfiguration von Auto-Scaling-Gruppen und -Richtlinien.">Created CI/CD pipelines with GitLab; configured Auto Scaling groups and policies.</li>
-          <li data-en="Managed users/groups with IAM; deployed infrastructure with CloudFormation and Terraform." data-de="Verwaltung von Benutzern/Gruppen mit IAM; Bereitstellung von Infrastruktur mit CloudFormation und Terraform.">Managed users/groups with IAM; deployed infrastructure with CloudFormation and Terraform.</li>
-          <li data-en="Monitored billing and built cost-optimisation strategies; SNS alerts from CloudWatch; VPC subnets." data-de="Kostenüberwachung und Entwicklung von Kostenoptimierungsstrategien; SNS-Benachrichtigungen aus CloudWatch; VPC-Subnetze.">Monitored billing and built cost-optimisation strategies; SNS alerts from CloudWatch; VPC subnets.</li>
-          <li data-en="Built Tableau dashboards; JIRA ticket-automation (Python, SQL); Jenkins + JMeter user-creation automation." data-de="Aufbau von Tableau-Dashboards; JIRA-Ticket-Automatisierung (Python, SQL); Benutzeranlage-Automatisierung mit Jenkins + JMeter.">Built Tableau dashboards; JIRA ticket-automation (Python, SQL); Jenkins + JMeter user-creation automation.</li>
+          <li data-en="Built a CI/CD pipeline integrating OWASP ZAP to run automated DAST scans on web apps and APIs across all Sync Lab client projects; monitored findings and supported teams through remediation." data-de="Aufbau einer CI/CD-Pipeline mit OWASP ZAP für automatisierte DAST-Scans von Web-Apps und APIs in allen Kundenprojekten von Sync Lab; Überwachung der Findings und Unterstützung der Teams bei der Behebung.">Built a CI/CD pipeline integrating OWASP ZAP to run automated DAST scans on web apps and APIs across all Sync Lab client projects; monitored findings and supported teams through remediation.</li>
+          <li data-en="Automated security report generation through a dedicated CI/CD pipeline." data-de="Automatisierung der Erstellung von Security-Reports über eine eigene CI/CD-Pipeline.">Automated security report generation through a dedicated CI/CD pipeline.</li>
+          <li data-en="Integrated SonarQube with GitLab pipelines and remediated security findings in customer projects." data-de="Integration von SonarQube in GitLab-Pipelines und Behebung von Security-Findings in Kundenprojekten.">Integrated SonarQube with GitLab pipelines and remediated security findings in customer projects.</li>
+          <li data-en="Applied threat modelling to customer projects using the Microsoft Threat Modeling Tool; created a reusable threat modelling template for customer engagements." data-de="Anwendung von Threat Modelling auf Kundenprojekte mit dem Microsoft Threat Modeling Tool; Erstellung einer wiederverwendbaren Threat-Modelling-Vorlage für Kundenprojekte.">Applied threat modelling to customer projects using the Microsoft Threat Modeling Tool; created a reusable threat modelling template for customer engagements.</li>
+          <li data-en="Created CI/CD pipelines using GitLab; configured Auto Scaling groups and scaling policies." data-de="Aufbau von CI/CD-Pipelines mit GitLab; Konfiguration von Auto-Scaling-Gruppen und Skalierungsrichtlinien.">Created CI/CD pipelines using GitLab; configured Auto Scaling groups and scaling policies.</li>
+          <li data-en="Managed users and groups with IAM; deployed infrastructure with CloudFormation and Terraform." data-de="Verwaltung von Benutzern und Gruppen mit IAM; Bereitstellung von Infrastruktur mit CloudFormation und Terraform.">Managed users and groups with IAM; deployed infrastructure with CloudFormation and Terraform.</li>
+          <li data-en="Monitored billing and developed cost-optimisation strategies; configured SNS alerts from CloudWatch." data-de="Überwachung der Kosten und Entwicklung von Kostenoptimierungsstrategien; Konfiguration von SNS-Benachrichtigungen aus CloudWatch.">Monitored billing and developed cost-optimisation strategies; configured SNS alerts from CloudWatch.</li>
+          <li data-en="Created public and private subnets with VPC; built and maintained Tableau dashboards for key business metrics." data-de="Erstellung öffentlicher und privater Subnetze mit VPC; Aufbau und Pflege von Tableau-Dashboards für zentrale Geschäftskennzahlen.">Created public and private subnets with VPC; built and maintained Tableau dashboards for key business metrics.</li>
+          <li data-en="Built a JIRA ticket-automation app (Python, SQL) and a Jenkins + JMeter user-creation automation." data-de="Entwicklung einer JIRA-Ticket-Automatisierung (Python, SQL) sowie einer Benutzeranlage-Automatisierung mit Jenkins + JMeter.">Built a JIRA ticket-automation app (Python, SQL) and a Jenkins + JMeter user-creation automation.</li>
         </ul>
       </div>
     </div>
@@ -162,7 +175,7 @@
         <ul>
           <li>GitLab CI/CD, Git</li>
           <li>Datadog, Grafana</li>
-          <li>SonarQube, JIRA</li>
+          <li>SonarQube, OWASP ZAP, JIRA</li>
           <li>Jenkins, JMeter</li>
         </ul>
       </div>
