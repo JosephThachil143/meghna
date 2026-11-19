@@ -220,4 +220,4 @@ button.btn-ghost { color: #fff; }
 @media (max-width: 860px) { .skill-group-wide ul { grid-template-columns: 1fr; } }
 
 /* Education degree titles in regular weight */
-.xp-body h3.edu-title { font-weight: 400; }
+.xp-body h3.edu-title { font-family: "Inter", sans-serif; font-weight: 400; font-size: 19px; }
