@@ -213,3 +213,8 @@ button.btn-ghost { color: #fff; }
 .contact-email { margin: 18px 0 0; font-size: 16px; }
 .contact-email a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .contact-card .contact-email a:hover { opacity: 0.85; }
+
+/* AI skills group spans the full row */
+.skill-group-wide { grid-column: 1 / -1; }
+.skill-group-wide ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+@media (max-width: 860px) { .skill-group-wide ul { grid-template-columns: 1fr; } }
